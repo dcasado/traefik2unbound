@@ -1,0 +1,10 @@
+[Unit]
+Description=Retrieve services hosts from traefik every 2 minutes
+
+[Timer]
+OnCalendar=*:0/2
+AccuracySec=1m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

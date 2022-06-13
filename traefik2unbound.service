@@ -1,0 +1,12 @@
+[Unit]
+Description=Retrieve services hosts from traefik every 2 minutes
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+RemainAfterExit=no
+ExecStart=/usr/local/sbin/traefik2unbound
+
+[Install]
+WantedBy=multi-user.target

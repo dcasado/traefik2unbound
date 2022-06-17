@@ -24,4 +24,4 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: traefik2unbound
+        files: traefik2unbound-*

@@ -6,8 +6,10 @@ on:
       - "*"
 
 jobs:
-
-  build:
+  release:
+    strategy:
+      matrix:
+        goarch: [amd64, arm64, armhf]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -18,7 +20,7 @@ jobs:
         go-version: 1.18
 
     - name: Run build
-      run: go build -o traefik2unbound-${GITHUB_REF/refs\/tags\//} main.go
+      run: GOARCH=${{ matrix.goarch }} go build -o traefik2unbound-${{ matrix.goarch }}-${GITHUB_REF/refs\/tags\//} main.go
 
     - name: Release
       uses: softprops/action-gh-release@v1

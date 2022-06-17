@@ -20,7 +20,7 @@ jobs:
         go-version: 1.18
 
     - name: Run build
-      run: GOOS=linux GOARCH=${{ matrix.goarch }} go build -o traefik2unbound-${{ matrix.goarch }}-${GITHUB_REF/refs\/tags\//} main.go
+      run: GOOS=linux GOARCH=${{ matrix.goarch }} go build -o traefik2unbound-${GITHUB_REF/refs\/tags\//}.$GOOS-${{ matrix.goarch }} main.go
 
     - name: Release
       uses: softprops/action-gh-release@v1

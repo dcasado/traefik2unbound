@@ -21,9 +21,14 @@ import (
 
 type urlList []string
 
-func (u *urlList) Set(url string) error {
-	if url != "" {
-		*u = append(*u, url)
+func (u *urlList) Set(urlsString string) error {
+	if urlsString != "" {
+		urls := strings.Split(urlsString, ",")
+		for _, url := range urls {
+			if url != "" {
+				*u = append(*u, url)
+			}
+		}
 	}
 	return nil
 }

@@ -119,7 +119,7 @@ func retrieveServicesHosts(traefikURL string) (map[string]string, error) {
 	for _, router := range allRouters {
 		match := re.FindStringSubmatch(router.Rule)
 		for i, name := range re.SubexpNames() {
-			if i != 0 && name == "url" {
+			if i != 0 && name == "url" && len(match) > i {
 				urls[match[i]] = ip
 			}
 		}
